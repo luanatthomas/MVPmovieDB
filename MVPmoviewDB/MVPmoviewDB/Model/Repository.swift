@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 enum Endpoint: String, CaseIterable {
-    case nowPlaying = "https://api.themoviedb.org/3/movie/now_playing?api_key=ed251172ec9ef37be6a2cc166f1ba10b&language=en-US&page=1"
-    case popular = "https://api.themoviedb.org/3/movie/popular?api_key=ed251172ec9ef37be6a2cc166f1ba10b&language=en-US&page=1"
+    case nowPlaying = "https://0e29e443-3b1a-4444-8587-1ac8a3e190df.mock.pstmn.io/nowPlayingMovies"
+    case popular = "https://0e29e443-3b1a-4444-8587-1ac8a3e190df.mock.pstmn.io/popularMovies"
 }
 
 protocol MovieRepository {

@@ -41,27 +41,33 @@ class MoviePresenter {
 
     var coordinator: CoordinatorFlowController?
     
+    let group = DispatchGroup()
+    
     func viewDidLoad() {
         var finishedNowPlaying = false
         var finishedPopular = false
         
         if repository.moviesNowPlaying.isEmpty {
+            group.enter()
             repository.fetchMovies(endpoint: .nowPlaying) { isFinished in
                 if isFinished {
                     finishedNowPlaying = true
                 }
+                self.group.leave()
             }
         }
         
         if repository.moviesPopular.isEmpty {
+            group.enter()
             repository.fetchMovies(endpoint: .popular) { isFinished in
                 if isFinished {
                     finishedPopular = true
                 }
+                self.group.leave()
             }
         }
         
-        DispatchQueue.main.async {
+        group.notify(queue: .main) {
             if finishedPopular && finishedNowPlaying {
                 self.delegate?.setupUI()
             }
