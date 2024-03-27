@@ -157,7 +157,7 @@ extension MovieDetailViewController {
     }
 }
 
-private extension MoviePresenter {
+extension MoviePresenter {
     typealias MovieDetailViewControllerModel = (title: String, overview: String, voteAverage: String, imageCover: Data?, tags: String)
     
     func makeMovieDetailViewControllerModel(indexPath: IndexPath, for index: Int, section: Int) -> MovieDetailViewControllerModel {
